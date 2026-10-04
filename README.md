@@ -34,7 +34,7 @@ Designed and configured a network using Cisco Packet Tracer.The project involved
 
 ## 📊 Project Documentation
 
-The complete technical report is available in [`Network-design-report.pdf`](./Network-design -report.pdf).
+The complete technical report is available in [`Network-design-report.pdf`](./Network-design-report.pdf).
 
 ## 📁 Project Files
 
