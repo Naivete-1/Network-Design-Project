@@ -117,19 +117,19 @@ Successful ping responses were used to verify that the addressing scheme, device
 
 ### Network Topology
 
-![Network Topology](screenshots/network-topology.png)
+![Network Topology](screenshots/network topology.png)
 
 ### Router Configuration
 
-![Router Configuration](screenshots/router-configuration.png)
+![Router Configuration](screenshots/Router Configuration.png)
 
 ### Switch Configuration
 
-![Switch Configuration](screenshots/switch-configuration.png)
+![Switch Configuration](screenshots/Switch Configuration.png)
 
 ### IP Address Configuration
 
-![IP Address Configuration](screenshots/ip-configuration.png)
+![IP Address Configuration](screenshots/ip configuration.png)
 
 ### Connectivity Testing
 
