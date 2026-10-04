@@ -1,52 +1,153 @@
-# Network Design Project
-# Project: Cisco Networking Design and Implementation
+# Cisco University LAN Network Design
 
-## 📌 Overview
-This project focuses on the network design for a University Engineering Faculty.
-A Cisco-based network infrastructure design project developed as part of my Computer Engineering studies.
+## 📌 Project Overview
+A Cisco-based University Local Area Network (LAN) designed and implemented in Cisco Packet Tracer for a three-floor university environment.
 
-## 🎯 Objective
-The project involved designing and configuring a functional network infrastructure with appropriate IP addressing, routing, switching and network services.
-Designed and configured a network using Cisco Packet Tracer.The project involved network topology design,IP addressing and Subnetting,VLAN configuration,routing,switching,device configuration,connectivity,and testing ,and Technical documentation
+The project focuses on designing an efficient IP addressing scheme, subnetting a Class C network, configuring Cisco networking devices, and enabling communication between different network segments.
 
-## 🛠️ Technologies & Tools
+**Completed:** 2024
+**Project Type:** Academic / Computer Engineering
+**Tool:** Cisco Packet Tracer
 
-- Cisco Packet Tracer
-- Cisco Routers & Switches
-- IPv4 Addressing 
-- Subnetting
-- Routing & Switching
-- Network Topology Design
+## 🎯 Objectives
 
-## 🌐 Network Design
+* Design a functional three-floor university LAN.
+* Apply IP subnetting to efficiently allocate network addresses.
+* Configure routers and switches.
+* Connect PCs and laptops across different network segments.
+* Enable communication between devices on the same and different subnets.
+* Test and verify network connectivity.
 
-<img width="1362" height="671" alt="final network design" src="https://github.com/user-attachments/assets/6d1c0130-ca53-4609-adcd-ce2cb0e4fa25" />
+## 🌐 Network Architecture
 
+The network uses a **hierarchical star topology**, with each floor containing switches connected to a central router.
 
-## 🔧 Key Implementation
+### Network Components
 
-- Designed the network topology
-- Configured routers and switches
-- Implemented IP addressing and subnetting
-- Configured routing
-- Tested connectivity between network devices
-- Documented the complete network design
+* 1 Cisco Router
+* 7 Cisco Switches
+* 72 PCs
+* 28 Laptops
+* Copper straight-through cables
+* Cisco Packet Tracer
 
-## 📊 Project Documentation
+### Floor Structure
 
-The complete technical report is available in [`Network-design-report.pdf`](./Network-design-report.pdf).
+| Floor        | Main Network Segment                      |   Hosts |
+| ------------ | ----------------------------------------- | ------: |
+| Ground Floor | Staff offices, laboratories/lecture areas |     30+ |
+| 1st Floor    | Laboratories & staff offices              | 30 + 14 |
+| 2nd Floor    | Micro labs, staff offices & seminar areas |      25 |
+
+## 🧮 IP Subnetting
+
+The original Class C network was:
+
+**204.15.5.0/24**
+
+The network was divided into smaller subnets according to the number of hosts required by each section.
+
+### Subnet Allocation
+
+| Network               | Subnet          | Subnet Mask     | Usable Host Range           | Broadcast    |
+| --------------------- | --------------- | --------------- | --------------------------- | ------------ |
+| Ground Floor          | 204.15.5.0/27   | 255.255.255.224 | 204.15.5.1 – 204.15.5.30    | 204.15.5.31  |
+| Ground Floor Reserved | 204.15.5.32/27  | 255.255.255.224 | 204.15.5.33 – 204.15.5.62   | 204.15.5.63  |
+| 1st Floor Labs        | 204.15.5.64/27  | 255.255.255.224 | 204.15.5.65 – 204.15.5.94   | 204.15.5.95  |
+| 2nd Floor             | 204.15.5.96/27  | 255.255.255.224 | 204.15.5.97 – 204.15.5.126  | 204.15.5.127 |
+| 1st Floor Staff       | 204.15.5.128/28 | 255.255.255.240 | 204.15.5.129 – 204.15.5.142 | 204.15.5.143 |
+| 2nd Floor Staff/Labs  | 204.15.5.144/28 | 255.255.255.240 | 204.15.5.145 – 204.15.5.158 | 204.15.5.159 |
+| Additional Subnet     | 204.15.5.160/28 | 255.255.255.240 | 204.15.5.161 – 204.15.5.174 | 204.15.5.175 |
+
+The subnet sizes were selected according to host requirements, using **/27 networks for larger segments** and **/28 networks for smaller segments**
+
+## 🔧 Router Configuration
+
+The router was configured with interfaces serving the different network segments.
+
+| Interface          | IP Address   | Subnet Mask     |
+| ------------------ | ------------ | --------------- |
+| GigabitEthernet0/0 | 204.15.5.1   | 255.255.255.224 |
+| GigabitEthernet0/1 | 204.15.5.65  | 255.255.255.224 |
+| FastEthernet0/0/0  | 204.15.5.129 | 255.255.255.240 |
+| GigabitEthernet0/2 | 204.15.5.145 | 255.255.255.240 |
+
+The router acts as the gateway between the different subnets and enables **inter-subnet communication**.
+
+## 🔀 Switch Configuration
+
+Seven switches were used throughout the three-floor network.
+
+Switches were connected using **Fast Ethernet copper connections**, while router interfaces connected to the main switches on each floor.
+
+Switch configuration included:
+
+* Router-to-switch connections
+* Switch-to-switch uplinks
+* Host connections
+* Port allocation
+* Network segment connectivity
+
+## 💻 Host Configuration
+
+The PCs and laptops were configured with **static IPv4 addresses** according to their assigned subnet.
+
+Each host was assigned:
+
+* IP address
+* Subnet mask
+* Default gateway
+
+This allowed devices to communicate within their subnet and, through the router, with devices on other subnets.
+
+## 🧪 Network Testing
+
+Connectivity was tested using **ICMP ping** between devices on different network segments.
+
+Testing included:
+
+* Same-subnet communication
+* Inter-subnet communication
+* Ground Floor → 1st Floor
+* Ground Floor → 2nd Floor
+
+Successful ping responses were used to verify that the addressing scheme, device configuration and routing were functioning correctly.
+
+## 📸 Project Screenshots
+
+### Network Topology
+
+![Network Topology](screenshots/network-topology.png)
+
+### Router Configuration
+
+![Router Configuration](screenshots/router-configuration.png)
+
+### Switch Configuration
+
+![Switch Configuration](screenshots/switch-configuration.png)
+
+### IP Address Configuration
+
+![IP Address Configuration](screenshots/ip-configuration.png)
+
+### Connectivity Testing
+
+![Ping Test](screenshots/ping-test.png)
 
 ## 📁 Project Files
 
-| File | Description |
-|---|---|
-| `Network-Design.pkt` | Cisco Packet Tracer network |
-| `Report.pdf` | Complete project documentation |
-| `README.md` | Project overview |
+* **`Network-Design.pkt`** — Cisco Packet Tracer network implementation
+* **`Report.pdf`** — Complete project report and technical documentation
+* **`screenshots/`** — Configuration and testing evidence
 
-## 🎓 Project Information
+## 🧠 Key Concepts Demonstrated
 
-**Project Type:** Academic Project  
-**Field:** Computer Engineering  
-**Tools:** Cisco Packet Tracer  
-**Completed:** 2024
+**Networking:**
+IP addressing • Subnetting • CIDR • Routing • Switching • LAN design • Network topology
+
+**Practical Configuration:**
+Router configuration • Switch configuration • Static IP addressing • Default gateways • Connectivity testing
+
+**Tools:**
+Cisco Packet Tracer
